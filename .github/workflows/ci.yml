@@ -1,0 +1,13 @@
+name: CI
+on: { push: { branches: [main] }, pull_request: {} }
+jobs:
+  bicep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Bicep (compile all modules to ARM)
+        run: |
+          az bicep install
+          az bicep build --file bicep/main.bicep
+      - name: Lint Bicep
+        run: az bicep lint --file bicep/main.bicep

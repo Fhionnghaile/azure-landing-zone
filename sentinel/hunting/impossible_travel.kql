@@ -1,0 +1,11 @@
+// Sign-ins by the same user from two locations too far apart for the time elapsed.
+SigninLogs
+| where ResultType == 0
+| project TimeGenerated, UserPrincipalName, Latitude = toreal(LocationDetails.geoCoordinates.latitude), Longitude = toreal(LocationDetails.geoCoordinates.longitude)
+| order by UserPrincipalName asc, TimeGenerated asc
+| extend prevT = prev(TimeGenerated), prevLat = prev(Latitude), prevLng = prev(Longitude), prevUser = prev(UserPrincipalName)
+| where UserPrincipalName == prevUser
+| extend hours = datetime_diff('second', TimeGenerated, prevT) / 3600.0
+| extend km = 6371 * acos(min_of(1.0, cos(radians(prevLat)) * cos(radians(Latitude)) * cos(radians(Longitude) - radians(prevLng)) + sin(radians(prevLat)) * sin(radians(Latitude))))
+| where hours > 0 and km / hours > 900
+| project TimeGenerated, UserPrincipalName, km, hours, kmh = km / hours
