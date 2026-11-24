@@ -4,7 +4,7 @@
 > **An enterprise-scale Azure landing zone: secure-by-default foundations before the first workload lands.**  
 > **Result:** 5 IaC files; validate/build clean.  
 > **Reproduce:** `az bicep build -f bicep/main.bicep`  
-> ![CI](https://github.com/fhionnghaile/azure-landing-zone/actions/workflows/ci.yml/badge.svg)
+> ![CI](https://github.com/fhionnghaile/azure-landing-zone/actions/workflows/ci.yml/badge.svg) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Fhionnghaile/azure-landing-zone/badge)](https://scorecard.dev/viewer/?uri=github.com/Fhionnghaile/azure-landing-zone)
 >
 > **What this is worth:** Gets governance, networking and identity right on day zero, so every team builds on a safe floor instead of hardening later.
 
