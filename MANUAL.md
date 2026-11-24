@@ -11,6 +11,9 @@ The secure foundations an Azure tenant needs before the first workload arrives: 
 ## 3. Demo
 Capture to record: `az bicep build` compiling every module, and a `what-if` against a sandbox subscription.
 
+![Real test run, captured 24 Nov 2026](docs/test-run.svg)
+*Real `az bicep build` output for every module, captured 24 Nov 2026. A `what-if` needs a sandbox subscription and is not shown.*
+
 ## 4. Run it yourself
 **Prerequisites:** Azure CLI with Bicep. A sandbox subscription for deploy or what-if.
 
